@@ -281,9 +281,6 @@ class GeneralHelper {
               : '';
       formatedData['controllers']['$i']['vendor'] =
           videoControllerData[i]['AdapterCompatibility'];
-      formatedData['controllers']['$i']['vram'] =
-          (int.parse(videoControllerData[i]['AdapterRAM'].toString()) / 1024) /
-              1024;
       formatedData['controllers']['$i']['vramDynamic'] =
           videoControllerData[i]['VideoMemoryType'].toString().trim() == '2'
               ? true
