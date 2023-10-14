@@ -8,9 +8,9 @@ import 'package:windows_system_info/models/windows_system_info.dart';
 class DeviceStaticinfo extends WindowsSystemInformation {
   @override
   List<Object?> get props => [
-        systemManufacturer,
+        // systemManufacturer,
         systemModel,
-        systemSerial,
+        // systemSerial,
         systemUuid,
         biosVendor,
         biosVersion,
@@ -40,9 +40,9 @@ class DeviceStaticinfo extends WindowsSystemInformation {
         cpuSocket,
       ];
 
-  final String systemManufacturer;
+  // final String systemManufacturer;
   final String systemModel;
-  final String systemSerial;
+  // final String systemSerial;
   final String systemUuid;
   final String biosVendor;
   final String biosVersion;
@@ -136,9 +136,9 @@ class DeviceStaticinfo extends WindowsSystemInformation {
   /// }
   ///
   DeviceStaticinfo({
-    required this.systemManufacturer,
+    // required this.systemManufacturer,
     required this.systemModel,
-    required this.systemSerial,
+    // required this.systemSerial,
     required this.systemUuid,
     required this.biosVendor,
     required this.biosVersion,
@@ -171,9 +171,9 @@ class DeviceStaticinfo extends WindowsSystemInformation {
   ///convert from all info
   static DeviceStaticinfo fromAllInfo(AllInfo allInfo) {
     return DeviceStaticinfo(
-      systemManufacturer: allInfo.system.manufacturer,
+      // systemManufacturer: allInfo.system.manufacturer,
       systemModel: allInfo.system.model,
-      systemSerial: allInfo.system.serial,
+      // systemSerial: allInfo.system.serial,
       systemUuid: allInfo.system.uuid,
       biosVendor: allInfo.bios.vendor,
 
