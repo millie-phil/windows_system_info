@@ -195,7 +195,7 @@ class WindowsSystemInfo {
       deviceInfo['system'] = GeneralHelper.formatSystemInfo(
         GeneralHelper.getValueAsMap(
             data: GeneralHelper.powerShell(
-                'Get-WmiObject Win32_ComputerSystemProduct | select Name,Vendor,Version,IdentifyingNumber,UUID | fl'),
+                'Get-WmiObject Win32_ComputerSystemProduct | select Name, UUID | fl'),
             seprator: ':'),
       );
       //CMD: WMIC /namespace:\\root\cimv2 path Win32_ComputerSystemProduct GET Name,Vendor,Version,IdentifyingNumber,UUID /format:list

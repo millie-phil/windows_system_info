@@ -9,8 +9,8 @@ class GeneralHelper {
     "Get-WmiObject Win32_bios | select Version, SerialNumber, SMBIOSBIOSVersion":
         "WMIC /namespace:\\\root\\cimv2 path Win32_bios GET Version,SerialNumber,SMBIOSBIOSVersion /format:list",
     //system
-    "Get-WmiObject Win32_ComputerSystemProduct | select Name,Vendor,Version,IdentifyingNumber,UUID | fl":
-        "WMIC /namespace:\\\root\\cimv2 path Win32_ComputerSystemProduct GET Name,Vendor,Version,IdentifyingNumber,UUID /format:list",
+    "Get-WmiObject Win32_ComputerSystemProduct | select Name,UUID | fl":
+        "WMIC /namespace:\\\root\\cimv2 path Win32_ComputerSystemProduct GET Name,UUID /format:list",
     //system sku
     'Get-WmiObject MS_Systeminformation -Namespace "root/wmi" | select systemsku | fl':
         "WMIC /namespace:\\\root\\wmi path MS_Systeminformation GET systemsku /format:list",
@@ -394,72 +394,6 @@ class GeneralHelper {
   ///formulate system infomations
   static Map<String, dynamic> formatSystemInfo(Map<String, dynamic> data) {
     final model = data['Name'].toString().toLowerCase();
-    final manufacturer = data['Vendor'].toString().toLowerCase();
-    if (model == 'virtualbox' ||
-        model == 'kvm' ||
-        model == 'virtual machine' ||
-        model == 'bochs' ||
-        model.startsWith('vmware') ||
-        model.startsWith('qemu')) {
-      data['virtual'] = true;
-      if (model.startsWith('virtualbox')) {
-        data['virtualHost'] = 'VirtualBox';
-      }
-      if (model.startsWith('vmware')) {
-        data['virtualHost'] = 'VMware';
-      }
-      if (model.startsWith('kvm')) {
-        data['virtualHost'] = 'KVM';
-      }
-      if (model.startsWith('bochs')) {
-        data['virtualHost'] = 'bochs';
-      }
-      if (model.startsWith('qemu')) {
-        data['virtualHost'] = 'KVM';
-      }
-    }
-    if (manufacturer.startsWith('vmware') ||
-        manufacturer.startsWith('qemu') ||
-        manufacturer == 'xen') {
-      data['virtual'] = true;
-      if (manufacturer.startsWith('vmware')) {
-        data['virtualHost'] = 'VMware';
-      }
-      if (manufacturer.startsWith('xen')) {
-        data['virtualHost'] = 'Xen';
-      }
-      if (manufacturer.startsWith('qemu')) {
-        data['virtualHost'] = 'KVM';
-      }
-    }
-    if (!(data['virtual'] == true)) {
-      String lines = powerShell(
-          'Get-WmiObject Win32_bios | select Version, SerialNumber, SMBIOSBIOSVersion');
-      //WMIC /namespace:\\root\cimv2 path Win32_bios GET Version,SerialNumber,SMBIOSBIOSVersion /format:list
-      if (lines.contains('VRTUAL') ||
-          lines.contains('A M I ') ||
-          lines.contains('VirtualBox') ||
-          lines.contains('VMWare') ||
-          lines.contains('Xen')) {
-        data['virtual'] = true;
-        if (lines.contains('VirtualBox') && data['virtualHost'] == null) {
-          data['virtualHost'] = 'VirtualBox';
-        }
-        if (lines.contains('VMware') && data['virtualHost'] == null) {
-          data['virtualHost'] = 'VMware';
-        }
-        if (lines.contains('Xen') && data['virtualHost'] == null) {
-          data['virtualHost'] = 'Xen';
-        }
-        if (lines.contains('VRTUAL') && data['virtualHost'] == null) {
-          data['virtualHost'] = 'Hyper-V';
-        }
-        if (lines.contains('A M I') && data['virtualHost'] == null) {
-          data['virtualHost'] = 'Virtual PC';
-        }
-      }
-    }
-
     return data;
   }
 
