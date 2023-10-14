@@ -25,12 +25,8 @@ class SystemInfo extends WindowsSystemInformation {
   /// String version: "0001"
   ///
   SystemInfo({
-    required this.manufacturer,
     required this.model,
-    required this.serial,
-    required this.sku,
     required this.uuid,
-    required this.version,
   });
   static SystemInfo fromJson(Map<String, dynamic> json) {
     //must pass enitre json object created.
