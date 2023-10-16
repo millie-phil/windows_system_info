@@ -40,7 +40,7 @@ class _ExampleWinodwSDetailsAppState extends State<ExampleWinodwSDetailsApp> {
     await WindowsSystemInfo.initWindowsInfo();
     if (await WindowsSystemInfo.isInitilized) {
       setState(() {
-        _cpuInfo = WindowsSystemInfo.cpu;
+        // _cpuInfo = WindowsSystemInfo.cpu;
       });
     }
   }

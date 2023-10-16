@@ -15,27 +15,27 @@ class AllInfo extends WindowsSystemInformation {
   @override
   List<Object?> get props => [
         system,
-        bios,
-        baseBoard,
-        chassis,
-        os,
-        cpu,
-        network,
-        disks,
-        memories,
-        graphicsInfo,
+        // bios,
+        // baseBoard,
+        // chassis,
+        // os,
+        // cpu,
+        // network,
+        // disks,
+        // memories,
+        // graphicsInfo,
       ];
 
   final SystemInfo system;
-  final BiosInfo bios;
-  final BaseBoardInfo baseBoard;
-  final ChassisInfo chassis;
-  final OsInfo os;
-  final CpuInfo cpu;
-  final List<NetworkInfo> network;
-  final List<DiskLayoutInfo> disks;
-  final List<MemoryInfo> memories;
-  final GraphicsInfo graphicsInfo;
+  // final BiosInfo bios;
+  // final BaseBoardInfo baseBoard;
+  // final ChassisInfo chassis;
+  // final OsInfo os;
+  // final CpuInfo cpu;
+  // final List<NetworkInfo> network;
+  // final List<DiskLayoutInfo> disks;
+  // final List<MemoryInfo> memories;
+  // final GraphicsInfo graphicsInfo;
 
   /// {system,
   ///
@@ -60,30 +60,30 @@ class AllInfo extends WindowsSystemInformation {
   /// }
   AllInfo({
     required this.system,
-    required this.bios,
-    required this.baseBoard,
-    required this.chassis,
-    required this.os,
-    required this.cpu,
-    required this.network,
-    required this.disks,
-    required this.memories,
-    required this.graphicsInfo,
+    // required this.bios,
+    // required this.baseBoard,
+    // required this.chassis,
+    // required this.os,
+    // required this.cpu,
+    // required this.network,
+    // required this.disks,
+    // required this.memories,
+    // required this.graphicsInfo,
   });
 
   /// convert from json
   static AllInfo fromJson(Map<String, dynamic> json) {
     return AllInfo(
       system: SystemInfo.fromJson(json),
-      bios: BiosInfo.fromJson(json),
-      baseBoard: BaseBoardInfo.fromJson(json),
-      chassis: ChassisInfo.fromJson(json),
-      os: OsInfo.fromJson(json),
-      cpu: CpuInfo.fromJson(json),
-      network: NetworkInfo.fromJson(json),
-      disks: DiskLayoutInfo.fromJson(json),
-      memories: MemoryInfo.fromJson(json),
-      graphicsInfo: GraphicsInfo.fromJson(json),
+      // bios: BiosInfo.fromJson(json),
+      // baseBoard: BaseBoardInfo.fromJson(json),
+      // chassis: ChassisInfo.fromJson(json),
+      // os: OsInfo.fromJson(json),
+      // cpu: CpuInfo.fromJson(json),
+      // network: NetworkInfo.fromJson(json),
+      // disks: DiskLayoutInfo.fromJson(json),
+      // memories: MemoryInfo.fromJson(json),
+      // graphicsInfo: GraphicsInfo.fromJson(json),
     );
   }
 }
